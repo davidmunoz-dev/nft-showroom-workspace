@@ -1,0 +1,14 @@
+<div>
+  <app-toolbar [user]="user"></app-toolbar>
+  <div class="flex justify-center mt-12">
+    <div class="text-3xl font-bold mb-4 ">NFT list</div>
+  </div>
+  <ng-container *ngIf="!loading; else isLoading">
+    <ng-container *ngFor="let nft of formattedNfts.ownedNfts">
+      <app-nft [nft]="nft" [wantlist]="wantlist" [user]="user"></app-nft>
+    </ng-container>
+  </ng-container>
+  <ng-template #isLoading>
+    <mat-spinner class="w-full m-auto" [diameter]="30"></mat-spinner>
+  </ng-template>
+</div>

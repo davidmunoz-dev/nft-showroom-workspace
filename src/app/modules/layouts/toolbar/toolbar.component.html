@@ -1,0 +1,27 @@
+<div class="h-16 bg-slate-800 flex flex-row justify-between drop-shadow w-full">
+  <div class="w-14"></div>
+  <div (click)="goHome()" class="self-center">
+    <img class="w-14 p-2 hover:drop-shadow cursor-pointer" src="assets/logo.svg">
+  </div>
+  <ng-container *ngIf="user">
+    <div class="w-14 self-center" [matMenuTriggerFor]="menu">
+      <ngx-avatar class="cursor-pointer" *ngIf="user" name="{{user.name}}" size="36"></ngx-avatar>
+    </div>
+    <mat-menu #menu="matMenu" [xPosition]="'before'"
+              class="w-40 px-2 rounded-b-lg text-base">
+      <div>
+        Connected as: {{user.name}}
+      </div>
+      <mat-divider></mat-divider>
+      <div class="cursor-pointer py-2 flex justify-around" (click)="goToWantlist()">
+        <div>My wantlist</div>
+        <mat-icon>favorite</mat-icon>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="cursor-pointer py-2 flex justify-around" (click)="logout()">
+        <div>Log out</div>
+        <mat-icon>power_settings_new</mat-icon>
+      </div>
+    </mat-menu>
+  </ng-container>
+</div>

@@ -1,0 +1,20 @@
+<app-toolbar [user]="user"></app-toolbar>
+<div class="flex justify-center mt-12">
+  <div class="text-3xl font-bold mb-4 ">Your wantlist</div>
+</div>
+<ng-container *ngIf="!loading; else isLoading">
+  <ng-container *ngIf="wantedNfts.length; else noWantedNft">
+    <ng-container *ngFor="let nft of wantedNfts">
+      <app-nft [nft]="nft" [wantlist]="wantlist" [user]="user"></app-nft>
+    </ng-container>
+  </ng-container>
+  <ng-template #noWantedNft>
+    <div class="p-8">
+      <div class="text-base">It seems like you don't have any NFT in your wantlist 😔️</div>
+      <div class="text-base">Don't worry, you can <span class="text-purple-500 font-medium">grab yours</span> !️</div>
+    </div>
+  </ng-template>
+</ng-container>
+<ng-template #isLoading>
+  <mat-spinner class="w-full m-auto" [diameter]="30"></mat-spinner>
+</ng-template>

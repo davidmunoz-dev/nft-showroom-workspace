@@ -1,0 +1,33 @@
+<div class="flex p-6">
+  <img class="md:w-80 w-40 p-2 hover:drop-shadow" src="assets/logo.svg">
+  <div class="text-3xl font-bold mb-4 self-center">Create your NFT's wantlist ⚡️</div>
+</div>
+<form [formGroup]="form" class="w-80 m-auto">
+  <div class="md:flex bg-white/75 rounded-xl p-8 md:p-0 drop-shadow">
+    <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+      <div class="font-medium">
+        <div class="text-3xl font-bold mb-4">Login</div>
+        <div class="">Don't have an account ? <span class="text-sky-500 cursor-pointer underline"
+                                                    (click)="goToSignUp()">Sign up !</span>🚀
+        </div>
+        <mat-form-field class="w-full" appearance="outline">
+          <input matInput formControlName="userName">
+          <mat-label>Username</mat-label>
+          <mat-error *ngIf="form.get('userName')?.hasError('required'); else defaultError">
+            Username is required
+          </mat-error>
+          <ng-template #defaultError>
+            <mat-error *ngIf="form.get('userName')?.errors">
+              {{form.get('userName')?.errors}}
+            </mat-error>
+          </ng-template>
+        </mat-form-field>
+        <button class="w-full" [disabled]="!form.get('userName')?.valid" (click)="onSubmitUserName()" color="primary"
+                mat-raised-button>
+          <span>Submit</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</form>
